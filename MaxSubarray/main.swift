@@ -17,12 +17,19 @@ func maxSubarray(arr: [Int]) -> [Int] {
     }
     print(estArr.max()!)
     
-    if let min = tArr.min() {
-        
+    var estArr1 = [Int]()
+    var tArr1 = arr
+    while tArr1.isEmpty == false {
+        let r = tArr1.reduce(0) { $0 + $1 }
+        estArr1.append(r)
+        if let min = tArr1.min() {
+            tArr1.remove(at: tArr1.firstIndex(of: min)!)
+        }
     }
+    print(estArr1.max()!)
     
     return [0, 0]
 }
 
-print(maxSubarray(arr: [2,-1,2,3,4,-5]))
+print(maxSubarray(arr: [2, -1, 2, 3, 4, -5]))
 
