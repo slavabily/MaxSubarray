@@ -7,5 +7,22 @@
 
 import Foundation
 
-print("Hello, World!")
+func maxSubarray(arr: [Int]) -> [Int] {
+    var tArr = arr
+    var estArr = [Int]()
+    for _ in arr {
+        let r = tArr.reduce(0) { $0 + $1 }
+        estArr.append(r)
+        tArr.removeLast()
+    }
+    print(estArr.max()!)
+    
+    if let min = tArr.min() {
+        
+    }
+    
+    return [0, 0]
+}
+
+print(maxSubarray(arr: [2,-1,2,3,4,-5]))
 
