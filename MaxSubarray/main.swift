@@ -13,7 +13,11 @@ func maxSubarray(arr: [Int]) -> [Int] {
     for _ in arr {
         let r = tArr.reduce(0) { $0 + $1 }
         estArr.append(r)
-        tArr.removeLast()
+        if tArr.first! > tArr.last! {
+            tArr.removeLast()
+        } else {
+            tArr.removeFirst()
+        }
     }
     print(estArr.max()!)
     
@@ -26,10 +30,9 @@ func maxSubarray(arr: [Int]) -> [Int] {
             tArr1.remove(at: tArr1.firstIndex(of: min)!)
         }
     }
-    print(estArr1.max()!)
     
-    return [0, 0]
+    return [estArr.max()!, estArr1.max()!]
 }
 
-print(maxSubarray(arr: [2, -1, 2, 3, 4, -5]))
+print(maxSubarray(arr: [-2, -3, -1, -4, -6]))
 
